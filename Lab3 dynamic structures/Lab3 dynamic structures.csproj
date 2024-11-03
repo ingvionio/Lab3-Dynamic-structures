@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\lab4-5-RPN-\RPN.Logic\RPN.Logic.csproj" />
+  </ItemGroup>
+
 </Project>
