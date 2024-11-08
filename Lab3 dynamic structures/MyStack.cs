@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_dynamic_structures
 {
-    public class Stack<T>:IEnumerable<T>,IDynamicStruct<T>
+    public class MyStack<T>:IEnumerable<T>,IDynamicStruct<T>
     {
         Node<T> head;
         int count;
@@ -39,7 +39,7 @@ namespace Lab3_dynamic_structures
             count--;
             return temp.Data;
         }
-        public T Top()
+        public T Peek()
         {
             if (empty)
                 throw new InvalidOperationException("Стек пуст");
@@ -53,10 +53,12 @@ namespace Lab3_dynamic_structures
 
         public void Print()
         {
+            Console.WriteLine("Текущее состояние: ");
             foreach (var item in this)
             {
-                Console.Write(item);
+                Console.Write(item + "  ");
             }
+            Console.WriteLine();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_dynamic_structures
 {
-    public class Queue<T> : IEnumerable<T>, IDynamicStruct<T>
+    public class MyQueue<T> : IEnumerable<T>, IDynamicStruct<T>
     {
         Node<T> head; // головной/первый элемент
         Node<T> tail; // последний/хвостовой элемент
@@ -35,7 +35,7 @@ namespace Lab3_dynamic_structures
             return output;
         }
         // получаем первый элемент
-        public T Top()
+        public T Peek()
         {
             if (empty)
                 throw new InvalidOperationException("Очередь пуста");
@@ -51,8 +51,9 @@ namespace Lab3_dynamic_structures
         {
             foreach (var item in this)
             {
-                Console.Write(item);
+                Console.Write(item + "  ");
             }
+            Console.WriteLine();
         }
 
 

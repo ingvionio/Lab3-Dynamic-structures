@@ -22,30 +22,37 @@ namespace Lab3_dynamic_structures
 
             foreach (string s in data)
             {
+                string structName = structure.GetType().Name.ToString();
+                structName = structName.Substring(0, structName.Length - 2);
                 switch (s.Substring(0,1))
                 {
                     case "1":
-                        Console.WriteLine("1");
+                        Console.WriteLine("Элемент \"" + s.Substring(2) + "\" добавлен в " + structName);
                         structure.Push(s.Substring(2));
                         break;
                     case "2":
-                        Console.WriteLine("2");
-                        structure.Pop();
+                        var pop = structure.Pop();
+                        Console.WriteLine("Элемент \"" + pop + "\" убран из " + structName);
                         break;
                     case "3":
-                        Console.WriteLine("3");
-                        structure.Top();
+                        var top = structure.Peek();
+                        Console.WriteLine("Первый элемент - " + top );
                         break;
                     case "4":
-                        Console.WriteLine("4");
-                        structure.IsEmpty();
+                        if (structure.IsEmpty())
+                        {
+                            Console.WriteLine(structName + " Пусто");
+                        }
+                        else
+                        {
+                            Console.WriteLine(structName + " Не пусто");
+                        }
                         break;
                     case "5":
-                        Console.WriteLine("5");
                         structure.Print();
                         break;
                     default:
-                        Console.WriteLine("Некорректная команда" + s);
+                        Console.WriteLine("Некорректная команда " + s);
                         break;
                 }
             }

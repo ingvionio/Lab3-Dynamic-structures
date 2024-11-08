@@ -11,7 +11,7 @@ namespace Lab3_dynamic_structures
         void Push(T elem);
         T Pop();
 
-        T Top();
+        T Peek();
 
         bool IsEmpty();
 
