@@ -9,21 +9,25 @@ namespace Lab3_dynamic_structures
     {
         static LinkedList<int> currentList = new LinkedList<int>();
         static int selectedMenuItem = 0;
-        static string[] menuItems = { // Объявление menuItems вне функций
-                "Создать новый список",
-                "Загрузить список из файла",
-                "Перевернуть список",
-                "Посчитать уникальные элементы",
-                "Вставить список в себя",
-                "Удалить все элементы E",
-                "Добавить список к текущему",
-                "Удвоить список",
-                "Вывести список",
-                "Переместить первый элемент в конец", 
-                "Переместить последний элемент в начало",
-                "Удалить неуникальные элементы",
-                "Выход"
-            };
+        static string[] menuItems = {
+            "Создать новый список",
+            "Загрузить список из файла",
+            "Перевернуть список",
+            "Посчитать уникальные элементы",
+            "Вставить список в себя",
+            "Удалить все элементы E",
+            "Добавить список к текущему",
+            "Удвоить список",
+            "Вывести список",
+            "Переместить первый элемент в конец",
+            "Переместить последний элемент в начало",
+            "Удалить неуникальные элементы",
+            "Вставить элемент в отсортированный список", 
+            "Вставить элемент F перед элементом E",  
+            "Разделить список по элементу", 
+            "Поменять местами два элемента", 
+            "Выход"
+        };
 
         public static void Main(string[] args)
         {
@@ -78,8 +82,8 @@ namespace Lab3_dynamic_structures
         static void ExecuteMenuItem(int selectedItem)
         {
             string[] menuActions =
-             {
-                "1","2","3","4","5","6","7","8","9","10","11","12","0" // Добавлены действия для новых пунктов
+            {
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "0" // Добавлены действия
             };
 
             string input = menuActions[selectedItem];
@@ -125,6 +129,18 @@ namespace Lab3_dynamic_structures
                     break;
                 case "12":
                     RemoveNonUnique();
+                    break;
+                case "13":
+                    InsertSorted();
+                    break;
+                case "14":
+                    InsertBefore();
+                    break;
+                case "15":
+                    SplitList();
+                    break;
+                case "16":
+                    SwapElements();
                     break;
                 case "0":
                     Environment.Exit(0);
@@ -286,6 +302,81 @@ namespace Lab3_dynamic_structures
             }
             currentList.RemoveNonUniqueElements();
             Console.WriteLine("Неуникальные элементы удалены.");
+        }
+        static void InsertSorted()
+        {
+            Console.Write("Введите элемент для вставки: ");
+            if (int.TryParse(Console.ReadLine(), out int value))
+            {
+                currentList.InsertSorted(value);
+                Console.WriteLine("Элемент вставлен.");
+            }
+            else
+            {
+                Console.WriteLine("Некорректный ввод.");
+            }
+        }
+
+
+        static void InsertBefore()
+        {
+            Console.Write("Введите элемент F для вставки: ");
+            if (!int.TryParse(Console.ReadLine(), out int f))
+            {
+                Console.WriteLine("Некорректный ввод F.");
+                return;
+            }
+
+            Console.Write("Введите элемент E, перед которым нужно вставить F: ");
+            if (!int.TryParse(Console.ReadLine(), out int e))
+            {
+                Console.WriteLine("Некорректный ввод E.");
+                return;
+            }
+
+            currentList.InsertBeforeFirstOccurrence(f, e);
+            Console.WriteLine($"Элемент {f} вставлен перед {e}.");
+        }
+
+        static void SplitList()
+        {
+            Console.Write("Введите элемент, по которому нужно разделить список: ");
+            if (int.TryParse(Console.ReadLine(), out int target))
+            {
+                LinkedList<int> secondList = currentList.Split(target);
+                Console.WriteLine("Список разделен.");
+                Console.WriteLine("Первый список:");
+                currentList.Print();
+                Console.WriteLine("Второй список:");
+                secondList.Print();
+
+            }
+
+            else
+            {
+                Console.WriteLine("Некорректный ввод.");
+            }
+        }
+
+
+        static void SwapElements()
+        {
+            Console.Write("Введите первый элемент для обмена: ");
+            if (!int.TryParse(Console.ReadLine(), out int element1))
+            {
+                Console.WriteLine("Некорректный ввод первого элемента.");
+                return;
+            }
+
+            Console.Write("Введите второй элемент для обмена: ");
+            if (!int.TryParse(Console.ReadLine(), out int element2))
+            {
+                Console.WriteLine("Некорректный ввод второго элемента.");
+                return;
+            }
+
+            currentList.SwapElements(element1, element2);
+            Console.WriteLine("Элементы поменяны местами.");
         }
     }
 }
