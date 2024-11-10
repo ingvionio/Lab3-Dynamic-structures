@@ -21,9 +21,9 @@ namespace Lab3_dynamic_structures
 
     public class LinkedList<T> : IEnumerable<T>  // односвязный список
     {
-        Node<T>? head; // головной/первый элемент
-        Node<T>? tail; // последний/хвостовой элемент
-        int count;  // количество элементов в списке
+        public Node<T>? head; // головной/первый элемент
+        public Node<T>? tail; // последний/хвостовой элемент
+        public int count;  // количество элементов в списке
 
         // добавление элемента
         public void Add(T data)
@@ -108,6 +108,18 @@ namespace Lab3_dynamic_structures
             if (count == 0)
                 tail = head;
             count++;
+        }
+
+        //Вывод списка в консоль
+        public void Print()
+        {
+            Node<T> current = head;
+            while (current != null)
+            {
+                Console.Write(current.Data + " ");
+                current = current.Next;
+            }
+            Console.WriteLine(); // Перевод строки для удобства
         }
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
