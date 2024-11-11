@@ -1,0 +1,20 @@
+﻿<Window x:Class="Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Выбор задачи" Height="370" Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Margin="20">
+            <TextBlock Text="Выбор задачи" FontSize="26" FontWeight="Bold" Foreground="#007ACC" Margin="0,0,0,30" HorizontalAlignment="Center" />
+            <Button x:Name="QueueButton" Content="График Очередь&#xD;&#xA;" Width="240" Height="50" Margin="0,15"
+                    Background="#007ACC" Foreground="White" FontSize="16" FontWeight="Bold"
+                    Click="QueuButton_Click"/>
+            <Button x:Name="StackButton" Content="График Стек&#xA;" Width="240" Height="50"
+                Background="#007ACC" Foreground="White" FontSize="16" FontWeight="Bold"
+                Click="StackButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
