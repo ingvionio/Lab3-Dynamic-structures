@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Lab3_dynamic_structures
@@ -20,15 +21,16 @@ namespace Lab3_dynamic_structures
         {
             string[] data = FileParse(filePath);
 
-            foreach (string s in data)
+            foreach (string str in data)
             {
                 string structName = structure.GetType().Name.ToString();
                 structName = structName.Substring(0, structName.Length - 2);
-                switch (s.Substring(0,1))
+                string result = Regex.Replace(str, @"\s", "");
+                switch (result.Substring(0,1))
                 {
                     case "1":
-                        Console.WriteLine("Элемент \"" + s.Substring(2) + "\" добавлен в " + structName);
-                        structure.Push(s.Substring(2));
+                        Console.WriteLine("Элемент \"" + str.Substring(2) + "\" добавлен в " + structName);
+                        structure.Push(str.Substring(2));
                         break;
                     case "2":
                         var pop = structure.Pop();
@@ -52,7 +54,8 @@ namespace Lab3_dynamic_structures
                         structure.Print();
                         break;
                     default:
-                        Console.WriteLine("Некорректная команда " + s);
+                        Console.Write("Некорректная команда " + str);
+                        Console.WriteLine();
                         break;
                 }
             }

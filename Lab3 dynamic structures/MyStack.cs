@@ -56,7 +56,7 @@ namespace Lab3_dynamic_structures
             Console.WriteLine("Текущее состояние: ");
             foreach (var item in this)
             {
-                Console.Write(item + "  ");
+                Console.Write(item + " ");
             }
             Console.WriteLine();
         }
