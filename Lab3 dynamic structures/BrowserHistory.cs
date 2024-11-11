@@ -49,5 +49,10 @@ namespace Lab3_dynamic_structures
             }
             return backStack.Peek();
         }
+
+        public string Current()
+        {
+            return backStack.IsEmpty() ? null : backStack.Peek();
+        }
     }
 }
