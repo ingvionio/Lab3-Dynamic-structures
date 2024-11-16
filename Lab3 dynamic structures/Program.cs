@@ -469,12 +469,10 @@ namespace Lab3_dynamic_structures
             Array.ForEach(arr, x => Console.Write(x + " "));
 
 
-
-
-            Console.WriteLine("\nОтсортированный массив:");
-            ob.HeapSortTraversal();
             Console.WriteLine("\nОбход кучи в глубину:");
             ob.DFSTraversal();
+            Console.WriteLine("\nОтсортированный массив:");
+            ob.HeapSortTraversal();
         }
 
         // ... (other menu functions)
