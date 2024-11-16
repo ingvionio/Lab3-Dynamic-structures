@@ -11,13 +11,11 @@ namespace Lab3_dynamic_structures
         MyStack<string> backStack = new MyStack<string>();
         MyStack<string> forwardStack = new MyStack<string>();
 
-        // Constructor to initialize object with homepage
         public BrowserHistory(string homepage)
         {
             backStack.Push(homepage);
         }
 
-        // Visit current url
         public void Visit(string url)
         {
             while (forwardStack.Count > 0)
@@ -27,8 +25,6 @@ namespace Lab3_dynamic_structures
             backStack.Push(url);
         }
 
-        // 'steps' move backward in history and return
-        // current page
         public string Back(int steps)
         {
             while (backStack.Count > 1 && steps-- > 0)
@@ -39,7 +35,6 @@ namespace Lab3_dynamic_structures
             return backStack.Peek();
         }
 
-        // 'steps' move forward and return current page
         public string Forward(int steps)
         {
             while (forwardStack.Count > 0 && steps-- > 0)

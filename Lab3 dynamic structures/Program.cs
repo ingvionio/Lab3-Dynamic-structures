@@ -458,18 +458,23 @@ namespace Lab3_dynamic_structures
 
 
             int[] arr = { 12, 11, 13, 5, 6, 7 };
-            HeapSort ob = new HeapSort();
+            BinaryTree ob = new BinaryTree();
+
+            foreach(var item in arr)
+            {
+                ob.Insert(item);
+            }
+
             Console.WriteLine("\nИсходный массив:");
             Array.ForEach(arr, x => Console.Write(x + " "));
 
 
 
-            ob.DoAlgoritm(arr);
-
 
             Console.WriteLine("\nОтсортированный массив:");
-            Array.ForEach(arr, x => Console.Write(x + " "));
-            Console.WriteLine();
+            ob.HeapSortTraversal();
+            Console.WriteLine("\nОбход кучи в глубину:");
+            ob.DFSTraversal();
         }
 
         // ... (other menu functions)
