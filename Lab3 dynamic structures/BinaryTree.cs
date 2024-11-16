@@ -41,58 +41,10 @@ namespace Lab3_dynamic_structures
 
         public void Heapify()
         {
-            List<int> inOrderList = new List<int>();
-            InOrderTraversalToList(Root, inOrderList);
-            int[] array = inOrderList.ToArray();
-            BuildMaxHeap(array);
-            Root = BuildTreeFromArray(array, 0, array.Length);
+            HeapifyDown(Root);
         }
         //
-        private void InOrderTraversalToList(TreeNode node, List<int> list)
-        {
-            if (node != null)
-            {
-                InOrderTraversalToList(node.Left, list);
-                list.Add(node.Value);
-                InOrderTraversalToList(node.Right, list);
-            }
-        }
-        //
-        private void BuildMaxHeap(int[] array)
-        {
-            int n = array.Length;
-            for (int i = n / 2 - 1; i >= 0; i--)
-            {
-                HeapifyDown(array, n, i);
-            }
-        }
-        //
-        private void HeapifyDown(int[] array, int n, int i)
-        {
-            int largest = i;
-            int left = 2 * i + 1;
-            int right = 2 * i + 2;
-
-            if (left < n && array[left] > array[largest])
-            {
-                largest = left;
-            }
-
-            if (right < n && array[right] > array[largest])
-            {
-                largest = right;
-            }
-
-            if (largest != i)
-            {
-                int swap = array[i];
-                array[i] = array[largest];
-                array[largest] = swap;
-
-                HeapifyDown(array, n, largest);
-            }
-        }
-        //
+        
         private TreeNode BuildTreeFromArray(int[] array, int index, int length)
         {
             if (index >= length)
